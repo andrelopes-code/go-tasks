@@ -8,17 +8,17 @@ import (
 
 type Task struct {
 	gorm.Model
-	Title 		string
+	Title       string
 	Description string
-	Done 		bool
+	Done        bool
 }
 
 type TaskResponse struct {
-	ID 			uint 		`json:"id"`
-	CreatedAt 	time.Time 	`json:"createdAt"`
-	UpdatadAt 	time.Time 	`json:"updatedAt"`
-	DeletedAt 	time.Time 	`json:"deletedAt,omitempty"`
-	Title 		string 		`json:"title"`
-	Description string 		`json:"description"`
-	Done 		bool 		`json:"done"`
+	ID          uint      `json:"id"`
+	CreatedAt   time.Time `json:"createdAt"`
+	UpdatadAt   time.Time `json:"updatedAt"`
+	DeletedAt   time.Time `json:"deletedAt,omitempty"`
+	Title       string    `json:"title"`
+	Description string    `json:"description"`
+	Done        bool      `json:"done"`
 }
