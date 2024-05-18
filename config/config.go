@@ -29,6 +29,6 @@ func GetSQLite() *gorm.DB {
 
 func GetLogger(p string) *Logger {
 	// Initialize logger
-	logger := NewLogger(p)
+	logger = NewLogger(p)
 	return logger
 }
