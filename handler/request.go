@@ -6,7 +6,6 @@ func errParamIsRequired(param string, typ string) error {
 	return fmt.Errorf("param: %s (type: %s) is required", param, typ)
 }
 
-// CreateTask
 type CreateTaskRequest struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
@@ -23,4 +22,19 @@ func (r *CreateTaskRequest) validate() error {
 		return errParamIsRequired("description", "string")
 	}
 	return nil
+}
+
+type UpdateTaskRequest struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Done        *bool  `json:"done"`
+}
+
+func (r *UpdateTaskRequest) validate() error {
+	if r.Title != "" || r.Description != "" || r.Done != nil {
+		return nil
+	}
+
+	// if none of the fields were provided, return falsy
+	return fmt.Errorf("at least one valid field must be provided")
 }
