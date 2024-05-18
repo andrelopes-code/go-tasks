@@ -20,18 +20,18 @@ func DeleteTaskHandler(ctx *gin.Context) {
 		return
 	}
 
-	deleteTask := schemas.Task{}
+	task := schemas.Task{}
 
 	// Check if the task with the ID exists
-	if err := db.First(&deleteTask, id).Error; err != nil {
+	if err := db.First(&task, id).Error; err != nil {
 		sendError(ctx, http.StatusNotFound, fmt.Sprintf("task with id: %d not found", id))
 		return
 	}
 	// Try to delete the specified task
-	if err := db.Delete(&deleteTask).Error; err != nil {
+	if err := db.Delete(&task).Error; err != nil {
 		sendError(ctx, http.StatusInternalServerError, fmt.Sprintf("error deleting task with id: %d", id))
 		return
 	}
 
-	sendSuccess(ctx, "delete-task", deleteTask)
+	sendSuccess(ctx, "delete-task", task)
 }
